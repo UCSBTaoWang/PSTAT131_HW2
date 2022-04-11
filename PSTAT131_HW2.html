@@ -395,7 +395,7 @@ library(tidyverse)</code></pre>
 ## x dplyr::lag()      masks stats::lag()
 ## x yardstick::spec() masks readr::spec()
 ## x recipes::step()   masks stats::step()
-## • Use tidymodels_prefer() to resolve common conflicts.</code></pre>
+## • Dig deeper into tidy modeling with R at https://www.tmwr.org</code></pre>
 <pre class="r"><code># read data by using read_csv()
 abalone &lt;- read_csv(&#39;/Users/wangtao/Desktop/PSTAT 131/PSTAT131_HW2/data/abalone.csv&#39;)</code></pre>
 <pre><code>## Rows: 4177 Columns: 9</code></pre>
@@ -501,13 +501,13 @@ abalone_recipe &lt;- recipe(age ~ type +longest_shell + diameter + height +
   step_dummy(all_nominal_predictors()) %&gt;% 
 # 2.  create interactions between 
 # `type` and `shucked_weight`,`longest_shell` and `diameter`,`shucked_weight` and `shell_weight`
-step_interact(terms = ~ shucked_weight:starts_with(&quot;type&quot;)) %&gt;% 
+  step_interact(terms = ~ shucked_weight:starts_with(&quot;type&quot;)) %&gt;% 
   step_interact(terms = ~ longest_shell:diameter )  %&gt;% 
   step_interact(terms = ~ shucked_weight:shell_weight ) %&gt;% 
 # 3.  center all predictors, and
-step_center(all_predictors()) %&gt;%
+  step_center(all_predictors()) %&gt;%
 # 4.  scale all predictors.
-step_scale(all_predictors())</code></pre>
+  step_scale(all_predictors())</code></pre>
 <div id="answer-explain-why-you-shouldnt-use-rings-to-predict-age." class="section level5">
 <h5>Answer: Explain why you shouldn’t use <code>rings</code> to predict
 <code>age</code>.</h5>
